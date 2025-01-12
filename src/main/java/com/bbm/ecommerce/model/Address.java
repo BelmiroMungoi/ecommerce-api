@@ -27,7 +27,7 @@ public class Address {
     private String city;
 
     @Column(nullable = false, length = 50)
-    private String state;
+    private String province;
 
     @Column(nullable = false, length = 50)
     private String country;
