@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -30,10 +31,10 @@ public class SellerReport {
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(nullable = false)
-    private LocalDate reportDate;
+    private LocalDateTime reportDate;
 
     @Temporal(TemporalType.TIMESTAMP)
-    private LocalDate resolvedDate;
+    private LocalDateTime resolvedDate;
 
     @ManyToOne
     @JoinColumn(name = "seller_id", nullable = false)
@@ -41,11 +42,11 @@ public class SellerReport {
 
     @PrePersist
     protected void onCreate() {
-        this.reportDate = LocalDate.now();
+        this.reportDate = LocalDateTime.now();
     }
 
     public void markAsResolved() {
         this.status = ReportStatus.RESOLVED;
-        this.resolvedDate = LocalDate.now();
+        this.resolvedDate = LocalDateTime.now();
     }
 }

@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -42,10 +43,10 @@ public class Transaction {
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(nullable = false)
-    private LocalDate transactionDate;
+    private LocalDateTime transactionDate;
 
     @PrePersist
     protected void onCreate() {
-        this.transactionDate = LocalDate.now();
+        this.transactionDate = LocalDateTime.now();
     }
 }

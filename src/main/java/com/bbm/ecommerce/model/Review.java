@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -36,10 +37,10 @@ public class Review {
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(nullable = false)
-    private LocalDate reviewDate;
+    private LocalDateTime reviewDate;
 
     @PrePersist
     protected void onCreate() {
-        this.reviewDate = LocalDate.now();
+        this.reviewDate = LocalDateTime.now();
     }
 }

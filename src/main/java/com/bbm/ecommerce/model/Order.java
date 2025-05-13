@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,14 +46,14 @@ public class Order {
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(nullable = false, updatable = false)
-    private LocalDate placedAt;
+    private LocalDateTime placedAt;
 
     @Temporal(TemporalType.TIMESTAMP)
-    private LocalDate completedAt;
+    private LocalDateTime completedAt;
 
     @PrePersist
     protected void onCreate() {
-        this.placedAt = LocalDate.now();
+        this.placedAt = LocalDateTime.now();
         recalculateTotalAmount();
     }
 
@@ -62,6 +63,6 @@ public class Order {
 
     public void completeOrder() {
         this.status = OrderStatus.COMPLETED;
-        this.completedAt = LocalDate.now();
+        this.completedAt = LocalDateTime.now();
     }
 }

@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -25,27 +26,27 @@ public class VerificationCode {
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(nullable = false)
-    private LocalDate createdAt;
+    private LocalDateTime createdAt;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(nullable = false)
-    private LocalDate expiresAt;
+    private LocalDateTime expiresAt;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "seller_id")
     private Seller seller;
 
     @PrePersist
     protected void onCreate() {
-        this.createdAt = LocalDate.now();
-        this.expiresAt = LocalDate.now().plusDays(1L); // Expira em 24 horas
+        this.createdAt = LocalDateTime.now();
+        this.expiresAt = LocalDateTime.now().plusDays(1L); // Expira em 24 horas
     }
 
     public boolean isExpired() {
-        return LocalDate.now().isAfter(this.expiresAt);
+        return LocalDateTime.now().isAfter(this.expiresAt);
     }
 }

@@ -17,6 +17,7 @@ import java.util.List;
 @Entity
 @Table(name = "cupons")
 public class Coupon {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
