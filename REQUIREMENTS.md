@@ -290,7 +290,7 @@ This system is a comprehensive e-commerce platform, built to support user intera
 - **Backend**: Java, SpringBoot
 - **Database**: PostgreSQL
 - **Authentication**: JWT for stateless authentication
-- **Payment Gateway Integration**: Stripe or PayPal
+- **Payment Gateway Integration**: Stripe or PayPal, M-Pesa, E-mola, M-kesh
 
 ---
 
